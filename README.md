@@ -17,13 +17,13 @@ To get the project up and running on your local machine, follow these steps:
 1. Clone the repository:
    
    ```sh
-   git clone <link>
+   git clone https://github.com/ulubas/cinema-tickets.git
    ```
 
 2. Navigate to the project directory:
 
    ```sh
-   cd cinema-tickets-javascript
+   cd cinema-tickets
    ```
 
 3. Install the necessary packages:

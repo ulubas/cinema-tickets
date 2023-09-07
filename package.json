@@ -33,8 +33,7 @@
     "moduleFileExtensions": [
       "js",
       "mjs"
-    ],
-    "useExperimentalModules": true
+    ]
   },
   "husky": {
     "hooks": {
