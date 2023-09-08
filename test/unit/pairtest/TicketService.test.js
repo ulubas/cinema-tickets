@@ -1,7 +1,5 @@
 import TicketService from '../../../src/pairtest/TicketService.js';
 import TicketTypeRequest from '../../../src/pairtest/lib/TicketTypeRequest.js';
-import TicketPaymentService from '../../../src/thirdparty/paymentgateway/TicketPaymentService.js';
-import SeatReservationService from '../../../src/thirdparty/seatbooking/SeatReservationService.js';
 import InvalidPurchaseException from '../../../src/pairtest/lib/InvalidPurchaseException.js';
 import {
   TicketType,
@@ -144,23 +142,6 @@ describe('TicketService', () => {
   });
 
   describe('TicketService Class - #calculateTotalAmount method', () => {
-    let ticketService;
-    let makePaymentMock;
-
-    beforeEach(() => {
-      ticketService = new TicketService(
-        new TicketPaymentService(),
-        new SeatReservationService(),
-      );
-      makePaymentMock = jest.spyOn(
-        ticketService.ticketPaymentService,
-        'makePayment',
-      );
-    });
-
-    afterEach(() => {
-      makePaymentMock.mockRestore();
-    });
 
     test('should calculate the correct total amount when only adult tickets are purchased', () => {
       // Given: A purchase request with only adult tickets

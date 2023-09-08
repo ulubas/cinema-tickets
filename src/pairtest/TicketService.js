@@ -96,11 +96,7 @@ export default class TicketService {
    * #calculateTotalAmount calculates the total amount to be paid for the
    * requested tickets.
    *
-   * Given: An array of TicketTypeRequest objects representing the ticket purchase request.
-   * When: Calculating the total amount to be paid.
-   * Then: It should return the correct total amount based on the ticket prices.
-   *
-   * @param {TicketTypeRequest[]} ticketTypeRequests - An array of TicketTypeRequest objects representing the ticket purchase request.
+   * @param {...TicketTypeRequest} ticketTypeRequests - A spread of TicketTypeRequest objects representing the ticket purchase request.
    * @returns {number} The total amount to be paid.
    * @private
    */
@@ -120,11 +116,7 @@ export default class TicketService {
    * #calculateTotalSeats calculates the total number of seats to be reserved
    * based on the ticket purchase request.
    *
-   * Given: An array of TicketTypeRequest objects representing the ticket purchase request.
-   * When: Calculating the total number of seats to reserve.
-   * Then: It should return the correct total number of seats to reserve (note: infants do not occupy a seat).
-   *
-   * @param {TicketTypeRequest[]} ticketTypeRequests - An array of TicketTypeRequest objects representing the ticket purchase request.
+   * @param {...TicketTypeRequest} ticketTypeRequests - A spread of TicketTypeRequest objects representing the ticket purchase request.
    * @returns {number} The total number of seats to reserve.
    * @private
    */
@@ -135,6 +127,7 @@ export default class TicketService {
       const ticketType = ticketTypeRequest.getTicketType();
       const ticketCount = ticketTypeRequest.getNoOfTickets();
 
+      // Business Rule: Infants do not occupy a seat
       if (ticketType !== TicketType.INFANT) {
         totalSeats += ticketCount;
       }

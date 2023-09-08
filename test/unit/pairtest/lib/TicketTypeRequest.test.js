@@ -1,4 +1,5 @@
 import TicketTypeRequest from '../../../../src/pairtest/lib/TicketTypeRequest.js';
+import { TicketType } from '../../../../src/pairtest/lib/constants.js';
 
 describe('TicketTypeRequest Class', () => {
   describe('Constructor', () => {
@@ -6,7 +7,7 @@ describe('TicketTypeRequest Class', () => {
     // When creating a TicketTypeRequest instance
     // Then it should create the instance successfully
     it('should create a TicketTypeRequest instance with valid inputs', () => {
-      expect(() => new TicketTypeRequest('ADULT', 3)).not.toThrow();
+      expect(() => new TicketTypeRequest(TicketType.ADULT, 3)).not.toThrow();
     });
 
     // Given an invalid ticket type
@@ -20,7 +21,7 @@ describe('TicketTypeRequest Class', () => {
     // When creating a TicketTypeRequest instance
     // Then it should throw a TypeError
     it('should throw a TypeError for non-integer number of tickets', () => {
-      expect(() => new TicketTypeRequest('ADULT', 'three')).toThrow(TypeError);
+      expect(() => new TicketTypeRequest(TicketType.ADULT, 'three')).toThrow(TypeError);
     });
   });
 
@@ -29,7 +30,7 @@ describe('TicketTypeRequest Class', () => {
     // When calling the getNoOfTickets method
     // Then it should return the correct number of tickets
     it('should return the correct number of tickets', () => {
-      const ticketTypeRequest = new TicketTypeRequest('CHILD', 4);
+      const ticketTypeRequest = new TicketTypeRequest(TicketType.CHILD, 4);
       expect(ticketTypeRequest.getNoOfTickets()).toBe(4);
     });
   });
@@ -39,8 +40,8 @@ describe('TicketTypeRequest Class', () => {
     // When calling the getTicketType method
     // Then it should return the correct ticket type
     it('should return the correct ticket type', () => {
-      const ticketTypeRequest = new TicketTypeRequest('INFANT', 1);
-      expect(ticketTypeRequest.getTicketType()).toBe('INFANT');
+      const ticketTypeRequest = new TicketTypeRequest(TicketType.INFANT, 1);
+      expect(ticketTypeRequest.getTicketType()).toBe(TicketType.INFANT);
     });
   });
 });
